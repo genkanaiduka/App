@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEN Kanaizuka Apps - Support & Privacy Policy</title>
+  <meta name="description" content="Official Support and Privacy Policy for apps developed by GEN Kanaizuka.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card-bg: #f5f5f7;
+      --text: #1d1d1f;
+      --text-secondary: #86868b;
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+      --border: #d2d2d7;
+      --radius: 14px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --card-bg: #1c1c1e;
+        --text: #f5f5f7;
+        --text-secondary: #a1a1a6;
+        --accent: #2997ff;
+        --accent-hover: #3ca3ff;
+        --border: #38383a;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      header {
+        background: rgba(0, 0, 0, 0.82);
+      }
+    }
+
+    .nav-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: var(--card-bg);
+      padding: 4px;
+      border-radius: 20px;
+    }
+
+    .nav-tab-btn {
+      padding: 6px 16px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      border-radius: 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .nav-tab-btn.active, .nav-tab-btn:hover {
+      color: var(--text);
+      background: var(--bg);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* Container */
+    .main-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 40px 0 50px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: rgba(0, 113, 227, 0.1);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* Content Views */
+    .view-section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: -0.015em;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 18px 0 8px;
+      color: var(--text);
+    }
+
+    .card p, .card li {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .card li {
+      margin-bottom: 6px;
+    }
+
+    /* Contact Card Special */
+    .contact-card {
+      text-align: center;
+      padding: 36px 24px;
+      background: linear-gradient(135deg, rgba(0,113,227,0.06), rgba(0,113,227,0.01));
+      border: 1px solid rgba(0,113,227,0.25);
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 24px;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: var(--transition);
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.3);
+    }
+
+    .contact-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .email-text {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-top: 12px;
+      display: block;
+    }
+
+    /* FAQ List */
+    .faq-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    /* App list pill tags */
+    .app-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .app-pill {
+      font-size: 0.82rem;
+      font-weight: 500;
+      background: var(--bg);
+      padding: 4px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 20px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      background: var(--card-bg);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand" onclick="switchTab('support'); return false;">GEN Kanaizuka Apps</a>
+      <div class="nav-tabs">
+        <button id="tab-support" class="nav-tab-btn active" onclick="switchTab('support')">Support</button>
+        <button id="tab-privacy" class="nav-tab-btn" onclick="switchTab('privacy')">Privacy Policy</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <span class="hero-badge">App Store Help Center</span>
+      <h1 id="hero-title">Support & Customer Service</h1>
+      <p id="hero-desc">Help, inquiries, and privacy information for all applications developed by GEN Kanaizuka.</p>
+      
+      <div class="app-tags" style="justify-content: center; margin-top: 20px;">
+        <span class="app-pill">Offloader</span>
+        <span class="app-pill">CueFlow Studio</span>
+        <span class="app-pill">HyperCatalog</span>
+        <span class="app-pill">LumaScope</span>
+      </div>
+    </section>
+
+    <!-- SUPPORT VIEW -->
+    <section id="view-support" class="view-section active">
+      
+      <!-- Contact Card -->
+      <div class="card contact-card">
+        <h2>Contact Support</h2>
+        <p>Have questions, bug reports, or feature requests? We are here to help you get the most out of our tools.</p>
+        <a href="mailto:genkanaiduka@gmail.com?subject=App%20Inquiry%20/%20Support" class="contact-btn">
+          ✉️ Email Support
+        </a>
+        <span class="email-text">genkanaiduka@gmail.com</span>
+      </div>
+
+      <!-- FAQ Card -->
+      <div class="card">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-q">Q: How do I restore my previous purchase on a new device?</div>
+          <p>Open the app settings or paywall screen and tap <strong>"Restore Purchases"</strong>. As long as you are signed in with the same Apple Account used for the original purchase, your Pro access will be restored immediately without any charge.</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q: Are your apps subscription-based or one-time purchases?</div>
+          <p>Our applications prioritize a clean, <strong>one-time lifetime purchase</strong> (Buy Once, Own Forever) model with a free trial period. No recurring monthly or annual subscription fees.</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q: How can I request a refund?</div>
+          <p>All transactions, billing, and refunds are managed directly by Apple. If you wish to request a refund, please visit Apple's official portal at <a href="https://reportaproblem.apple.com" target="_blank" style="color:var(--accent);">reportaproblem.apple.com</a>.</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q: Found a bug or have a feature request?</div>
+          <p>Please email us at <a href="mailto:genkanaiduka@gmail.com" style="color:var(--accent);">genkanaiduka@gmail.com</a> with your device model, macOS / iOS version, and a brief description of the issue. We review and respond to feedback actively.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRIVACY POLICY VIEW -->
+    <section id="view-privacy" class="view-section">
+
+      <div class="card">
+        <h2>Privacy Policy</h2>
+        <p><strong>Last Updated: October 2026</strong></p>
+        <p style="margin-top: 10px;">
+          This Privacy Policy applies to all software applications and services developed and distributed by <strong>GEN Kanaizuka</strong> through the Apple App Store. Your privacy is paramount, and our software is designed strictly with a privacy-first approach.
+        </p>
+
+        <h3>1. Information We Do NOT Collect</h3>
+        <p>We believe your personal data belongs to you. Our applications:</p>
+        <ul>
+          <li>Do <strong>not</strong> require user account registration.</li>
+          <li>Do <strong>not</strong> collect, store, transmit, or sell personal identifying information (PII).</li>
+          <li>Do <strong>not</strong> use third-party advertising or cross-app tracking networks.</li>
+          <li>Do <strong>not</strong> access your camera, microphone, photos, or files without your explicit, on-demand permission.</li>
+        </ul>
+
+        <h3>2. Local Processing & File Access</h3>
+        <p>
+          All data processing—including media analysis, checksum calculation, timeline cues, audio handling, and cataloging—is performed <strong>strictly on your local device</strong>. Your files, media clips, and production documents never leave your hardware.
+        </p>
+
+        <h3>3. In-App Purchases & Payments</h3>
+        <p>
+          All financial transactions and in-app purchases are securely handled exclusively by Apple via <strong>StoreKit</strong>. We do not collect or store your payment details, credit card numbers, or billing addresses.
+        </p>
+
+        <h3>4. Crash Reports and Diagnostics</h3>
+        <p>
+          If you have opted in to share analytics with app developers through Apple's operating system settings, we may receive anonymized crash logs and basic system diagnostic information solely to debug and improve app stability.
+        </p>
+
+        <h3>5. Children's Privacy</h3>
+        <p>
+          Our applications do not address anyone under the age of 13. We do not knowingly collect personal identifiable information from children.
+        </p>
+
+        <h3>6. Changes to This Privacy Policy</h3>
+        <p>
+          We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date.
+        </p>
+
+        <h3>7. Contact Us</h3>
+        <p>
+          If you have any questions, concerns, or suggestions regarding this Privacy Policy, please contact us at:
+        </p>
+        <p style="margin-top: 8px;">
+          <strong>Developer:</strong> GEN Kanaizuka<br>
+          <strong>Email:</strong> <a href="mailto:genkanaiduka@gmail.com" style="color:var(--accent);">genkanaiduka@gmail.com</a>
+        </p>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 GEN Kanaizuka. All rights reserved.</p>
+    <p style="margin-top: 6px; font-size: 0.8rem;">
+      <a href="#support" onclick="switchTab('support'); return false;">Support</a> &bull; 
+      <a href="#privacy" onclick="switchTab('privacy'); return false;">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <!-- Script for Single-Page Tab Switching & Hash Navigation -->
+  <script>
+    function switchTab(tab) {
+      const isPrivacy = tab === 'privacy';
+      
+      // Update Tab Buttons
+      document.getElementById('tab-support').classList.toggle('active', !isPrivacy);
+      document.getElementById('tab-privacy').classList.toggle('active', isPrivacy);
+
+      // Update Views
+      document.getElementById('view-support').classList.toggle('active', !isPrivacy);
+      document.getElementById('view-privacy').classList.toggle('active', isPrivacy);
+
+      // Update Hero Text
+      const heroTitle = document.getElementById('hero-title');
+      const heroDesc = document.getElementById('hero-desc');
+      if (isPrivacy) {
+        heroTitle.innerText = "Privacy Policy";
+        heroDesc.innerText = "Clear, transparent, and privacy-first standards for all our applications.";
+      } else {
+        heroTitle.innerText = "Support & Customer Service";
+        heroDesc.innerText = "Help, inquiries, and customer service for all applications developed by GEN Kanaizuka.";
+      }
+
+      // Update URL Hash without reload
+      history.replaceState(null, null, isPrivacy ? '#privacy' : '#support');
+    }
+
+    // Auto-detect hash on load (e.g. index.html#privacy or index.html#support)
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#privacy') {
+        switchTab('privacy');
+      } else {
+        switchTab('support');
+      }
+    });
+  </script>
+
+</body>
+</html>
