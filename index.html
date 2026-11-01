@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEN Kanaizuka - Pro Apps, Support & Privacy Policy</title>
+  <meta name="description" content="Professional production tools, support center, and privacy policies by GEN Kanaizuka.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card-bg: #f5f5f7;
+      --card-border: #d2d2d7;
+      --text: #1d1d1f;
+      --text-secondary: #86868b;
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+      --border: #e5e5ea;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --badge-bg: rgba(0, 113, 227, 0.08);
+      --badge-color: #0071e3;
+      --appstore-bg: #000000;
+      --appstore-text: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --card-bg: #1c1c1e;
+        --card-border: #2c2c2e;
+        --text: #f5f5f7;
+        --text-secondary: #a1a1a6;
+        --accent: #2997ff;
+        --accent-hover: #3ca3ff;
+        --border: #38383a;
+        --badge-bg: rgba(41, 151, 255, 0.14);
+        --badge-color: #2997ff;
+        --appstore-bg: #ffffff;
+        --appstore-text: #000000;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      header {
+        background: rgba(0, 0, 0, 0.85);
+      }
+    }
+
+    .nav-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 4px;
+      background: var(--card-bg);
+      padding: 4px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+    }
+
+    .nav-tab-btn {
+      padding: 6px 16px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      border-radius: 18px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .nav-tab-btn.active, .nav-tab-btn:hover {
+      color: var(--text);
+      background: var(--bg);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 30px 0 44px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--badge-color);
+      background: var(--badge-bg);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* App Pill Tags */
+    .app-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+      justify-content: center;
+    }
+
+    .app-pill {
+      font-size: 0.84rem;
+      font-weight: 500;
+      background: var(--card-bg);
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .app-pill:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Content Views */
+    .view-section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Apps Grid */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+      margin-top: 20px;
+    }
+
+    .app-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .app-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .app-card:hover {
+        box-shadow: 0 10px 28px rgba(0,0,0,0.3);
+      }
+    }
+
+    .app-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .app-icon-img {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .app-icon-img {
+        border-color: rgba(255,255,255,0.1);
+      }
+    }
+
+    .platform-badge {
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: var(--bg);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .app-card h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .app-tagline {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .app-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .app-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .app-features li {
+      font-size: 0.85rem;
+      color: var(--text);
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .app-features li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* Card Footer & Pricing */
+    .app-card-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .pricing-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .pricing-primary {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .pricing-tag {
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--badge-bg);
+      padding: 2px 7px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .pricing-sub {
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    /* Status & CTA Buttons */
+    .status-action-wrap {
+      flex-shrink: 0;
+    }
+
+    .appstore-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--appstore-bg);
+      color: var(--appstore-text);
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 18px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .appstore-btn:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+
+    .appstore-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      border-radius: 18px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .status-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+      opacity: 0.6;
+    }
+
+    /* Better Together Section */
+    .better-together-section {
+      margin-top: 60px;
+      padding-top: 50px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-header h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-top: 8px;
+      color: var(--text);
+    }
+
+    .section-header p {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 8px auto 0;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .workflow-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .workflow-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .workflow-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .workflow-icons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .workflow-icon-mini {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+
+    .workflow-plus {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .workflow-suite-name {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+
+    .workflow-card h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .workflow-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Cards (Support & Privacy) */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: -0.015em;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 18px 0 8px;
+      color: var(--text);
+    }
+
+    .card p, .card li {
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .card li {
+      margin-bottom: 6px;
+    }
+
+    /* Contact Card Special */
+    .contact-card {
+      text-align: center;
+      padding: 36px 24px;
+      background: linear-gradient(135deg, rgba(0,113,227,0.06), rgba(0,113,227,0.01));
+      border: 1px solid rgba(0,113,227,0.25);
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 24px;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: var(--transition);
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.3);
+    }
+
+    .contact-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .email-text {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-top: 12px;
+      display: block;
+    }
+
+    /* FAQ List */
+    .faq-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 20px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      background: var(--card-bg);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand" onclick="switchTab('apps'); return false;">
+        <span>GEN Kanaizuka</span>
+      </a>
+      <div class="nav-tabs">
+        <button id="tab-apps" class="nav-tab-btn active" onclick="switchTab('apps')">Apps</button>
+        <button id="tab-support" class="nav-tab-btn" onclick="switchTab('support')">Support</button>
+        <button id="tab-privacy" class="nav-tab-btn" onclick="switchTab('privacy')">Privacy Policy</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <span id="hero-badge" class="hero-badge">Pro Creative Tools</span>
+      <h1 id="hero-title">Apps for Creators & Live Operators</h1>
+      <p id="hero-desc">Engineered for rock-solid stability, zero latency, and uncompromising workflows on macOS & iOS.</p>
+      
+      <!-- Quick navigation pills -->
+      <div class="app-tags">
+        <a href="#offloader" class="app-pill" onclick="showApp('offloader'); return false;">Offloader</a>
+        <a href="#cueflow" class="app-pill" onclick="showApp('cueflow'); return false;">CueFlow Studio</a>
+        <a href="#hypercatalog" class="app-pill" onclick="showApp('hypercatalog'); return false;">HyperCatalog</a>
+        <a href="#lumascope" class="app-pill" onclick="showApp('lumascope'); return false;">LumaScope Pro</a>
+        <a href="#lumalut" class="app-pill" onclick="showApp('lumalut'); return false;">LumaLUT</a>
+        <a href="#cartpad" class="app-pill" onclick="showApp('cartpad'); return false;">CartPad</a>
+      </div>
+    </section>
+
+    <!-- 1. APPS VIEW -->
+    <section id="view-apps" class="view-section active">
+      <div class="apps-grid">
+
+        <!-- 1. Offloader -->
+        <article class="app-card" id="app-offloader">
+          <div>
+            <div class="app-card-top">
+              <img src="assets/icons/offloader.png" alt="Offloader Icon" class="app-icon-img">
+              <span class="platform-badge">macOS</span>
+            </div>
+            <h2>Offloader</h2>
+            <div class="app-tagline">Secure Media Offloader & Checksum Verifier</div>
+            <p class="app-desc">High-speed, multi-destination media backup engineered for DITs and filmmakers on set.</p>
+            <ul class="app-features">
+              <li>Parallel multi-destination backup to SSD, HDD & RAID</li>
+              <li>MD5, xxHash & SHA-256 byte-by-byte verification</li>
+              <li>Automated Media Hash List (MHL) & visual PDF reports</li>
+              <li>Real-time drive speed & thermal monitoring</li>
+            </ul>
+          </div>
+          <div class="app-card-footer">
+            <div class="pricing-block">
+              <div class="pricing-primary">$49.99 <span class="pricing-tag">7-Day Free Trial</span></div>
+              <span class="pricing-sub">One-Time Lifetime Purchase</span>
+            </div>
+            <div class="status-action-wrap">
+              <span class="status-badge">Coming Soon</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. CueFlow Studio -->
+        <article class="app-card" id="app-cueflow">
+          <div>
+            <div class="app-card-top">
+              <img src="assets/icons/cueflow.png" alt="CueFlow Studio Icon" class="app-icon-img">
+              <span class="platform-badge">macOS</span>
+            </div>
+            <h2>CueFlow Studio</h2>
+            <div class="app-tagline">Timeline & Live Show Cue System</div>
+            <p class="app-desc">Rock-solid cue management for theatre, stage operations, corporate shows, and live streaming.</p>
+            <ul class="app-features">
+              <li>Visual cue list with instant GO trigger & misfire guard</li>
+              <li>Multi-track audio playback & OSC / MIDI broadcast</li>
+              <li>External HTML/Web teleprompter & timer output</li>
+              <li>Single-day pass ($0.99) & lifetime license options</li>
+            </ul>
+          </div>
+          <div class="app-card-footer">
+            <div class="pricing-block">
+              <div class="pricing-primary">$99.99 <span class="pricing-tag">7-Day Free Trial</span></div>
+              <span class="pricing-sub">$0.99 1-Day Pass Available</span>
+            </div>
+            <div class="status-action-wrap">
+              <a href="https://apps.apple.com/app/cueflow-studio/id6823194669" target="_blank" rel="noopener" class="appstore-btn">
+                <svg viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.34-6.42-9.79-11.37-20.94-14.86-33.45-3.48-12.51-5.23-24.14-5.23-34.89 0-16.1 4.12-29.58 12.35-40.45 8.24-10.88 18.59-16.43 31.06-16.65 4.8.11 10.13 1.25 15.99 3.43 5.86 2.18 9.53 3.35 11.01 3.5 2.13-.33 6.08-1.55 11.85-3.66 5.76-2.12 10.9-3.13 15.41-3.03 11.32.55 20.89 4.6 28.71 12.16-10.02 6.1-15.08 14.8-15.19 26.11-.11 9.47 3.59 17.63 11.11 24.47 7.51 6.86 16.44 10.78 26.79 11.76-2.07 6.42-4.57 12.96-7.51 19.63zM119.22 31.84c0-7.73 2.72-15.02 8.16-21.87 5.44-6.86 12.2-11.05 20.27-12.57.11 1.09.16 2.07.16 2.94 0 7.62-2.88 15.08-8.65 22.37-5.76 7.3-12.84 11.54-21.24 12.74-.22-1.2-.47-2.4-.64-3.61z"/></svg>
+                App Store
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. HyperCatalog -->
+        <article class="app-card" id="app-hypercatalog">
+          <div>
+            <div class="app-card-top">
+              <img src="assets/icons/hypercatalog.png" alt="HyperCatalog Icon" class="app-icon-img">
+              <span class="platform-badge">macOS</span>
+            </div>
+            <h2>HyperCatalog</h2>
+            <div class="app-tagline">Ultra-Fast Media & Asset Catalog</div>
+            <p class="app-desc">Lightning-fast offline storage indexer and visual asset navigator for deep media archives.</p>
+            <ul class="app-features">
+              <li>Instant search across millions of files on disconnected drives</li>
+              <li>Rich metadata extraction (camera codecs, Exif, resolutions)</li>
+              <li>Interactive D3-powered visual storage graphs</li>
+              <li>Smart duplicate file & orphan asset detection</li>
+            </ul>
+          </div>
+          <div class="app-card-footer">
+            <div class="pricing-block">
+              <div class="pricing-primary">$24.99 <span class="pricing-tag">7-Day Free Trial</span></div>
+              <span class="pricing-sub">One-Time Lifetime Purchase</span>
+            </div>
+            <div class="status-action-wrap">
+              <a href="https://apps.apple.com/app/hypercatalog-offline-disk-hub/id6823483376" target="_blank" rel="noopener" class="appstore-btn">
+                <svg viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.81-11.96-14.34-6.42-9.79-11.37-20.94-14.86-33.45-3.48-12.51-5.23-24.14-5.23-34.89 0-16.1 4.12-29.58 12.35-40.45 8.24-10.88 18.59-16.43 31.06-16.65 4.8.11 10.13 1.25 15.99 3.43 5.86 2.18 9.53 3.35 11.01 3.5 2.13-.33 6.08-1.55 11.85-3.66 5.76-2.12 10.9-3.13 15.41-3.03 11.32.55 20.89 4.6 28.71 12.16-10.02 6.1-15.08 14.8-15.19 26.11-.11 9.47 3.59 17.63 11.11 24.47 7.51 6.86 16.44 10.78 26.79 11.76-2.07 6.42-4.57 12.96-7.51 19.63zM119.22 31.84c0-7.73 2.72-15.02 8.16-21.87 5.44-6.86 12.2-11.05 20.27-12.57.11 1.09.16 2.07.16 2.94 0 7.62-2.88 15.08-8.65 22.37-5.76 7.3-12.84 11.54-21.24 12.74-.22-1.2-.47-2.4-.64-3.61z"/></svg>
+                App Store
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. LumaScope Pro -->
+        <article class="app-card" id="app-lumascope">
+          <div>
+            <div class="app-card-top">
+              <img src="assets/icons/lumascope.png" alt="LumaScope Pro Icon" class="app-icon-img">
+              <span class="platform-badge">macOS</span>
+            </div>
+            <h2>LumaScope Pro</h2>
+            <div class="app-tagline">Hardware-Grade Real-Time Video Scopes</div>
+            <p class="app-desc">Turn your Apple Silicon Mac into a broadcast-accurate reference telemetry monitor.</p>
+            <ul class="app-features">
+              <li>Metal-accelerated 60fps real-time waveform & parade</li>
+              <li>High-precision vectorscope, CIE diagram & false color</li>
+              <li>HDR (HLG/PQ) and legal gamut out-of-range warnings</li>
+              <li>NDI, Blackmagic DeckLink & video file input support</li>
+            </ul>
+          </div>
+          <div class="app-card-footer">
+            <div class="pricing-block">
+              <div class="pricing-primary">$59.99 <span class="pricing-tag">7-Day Free Trial</span></div>
+              <span class="pricing-sub">One-Time Lifetime Purchase</span>
+            </div>
+            <div class="status-action-wrap">
+              <span class="status-badge">Coming Soon</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. LumaLUT -->
+        <article class="app-card" id="app-lumalut">
+          <div>
+            <div class="app-card-top">
+              <img src="assets/icons/lumalut.png" alt="LumaLUT Icon" class="app-icon-img">
+              <span class="platform-badge">macOS</span>
+            </div>
+            <h2>LumaLUT</h2>
+            <div class="app-tagline">Instant 3D LUT Deck & Player</div>
+            <p class="app-desc">Rapidly audition, split-compare, and export custom 3D LUTs across thousands of `.cube` files.</p>
+            <ul class="app-features">
+              <li>Live grid preview of hundreds of LUTs simultaneously</li>
+              <li>Interactive split-screen A/B comparison on Log/RAW footage</li>
+              <li>Cinema RAW/MXF hardware decoding & LUT strength mixing</li>
+              <li>One-click custom baked `.cube` export for cameras & NLEs</li>
+            </ul>
+          </div>
+          <div class="app-card-footer">
+            <div class="pricing-block">
+              <div class="pricing-primary">$9.99 <span class="pricing-tag">In-App Purchase</span></div>
+              <span class="pricing-sub">Pro Feature & Export Unlock</span>
+            </div>
+            <div class="status-action-wrap">
+              <span class="status-badge">Coming Soon</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. CartPad -->
+        <article class="app-card" id="app-cartpad">
+          <div>
+            <div class="app-card-top">
+              <img src="assets/icons/cartpad.png" alt="CartPad Icon" class="app-icon-img">
+              <span class="platform-badge">macOS / iOS</span>
+            </div>
+            <h2>CartPad</h2>
+            <div class="app-tagline">Zero-Latency Live Audio Cart Player</div>
+            <p class="app-desc">Instant sound-board and jingle cartridge system for broadcasting, live podcasting, and theatre.</p>
+            <ul class="app-features">
+              <li>Sub-millisecond instant audio playback with tactile response</li>
+              <li>Keyboard hotkeys, Stream Deck & MIDI controller mapping</li>
+              <li>Multi-bus audio routing (House PA, In-Ear Monitors, Stream)</li>
+              <li>Color-coded cartridge banks & non-destructive loop markers</li>
+            </ul>
+          </div>
+          <div class="app-card-footer">
+            <div class="pricing-block">
+              <div class="pricing-primary">$9.99 <span class="pricing-tag">In-App Purchase</span></div>
+              <span class="pricing-sub">Universal Purchase (Mac & iOS)</span>
+            </div>
+            <div class="status-action-wrap">
+              <span class="status-badge">Coming Soon</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Better Together (Workflow Pairings) -->
+      <div class="better-together-section">
+        <div class="section-header">
+          <span class="hero-badge">Production Workflows</span>
+          <h3>Better Together</h3>
+          <p>Each app is built to excel standalone, but pairs seamlessly to eliminate production bottlenecks.</p>
+        </div>
+
+        <div class="workflow-grid">
+          
+          <!-- Pair 1: DIT & Archive -->
+          <div class="workflow-card">
+            <div class="workflow-header">
+              <div class="workflow-icons">
+                <img src="assets/icons/offloader.png" alt="Offloader" class="workflow-icon-mini">
+                <span class="workflow-plus">+</span>
+                <img src="assets/icons/hypercatalog.png" alt="HyperCatalog" class="workflow-icon-mini">
+              </div>
+              <span class="workflow-suite-name">DIT & Archive Suite</span>
+            </div>
+            <h4>Offloader + HyperCatalog</h4>
+            <p class="workflow-desc">
+              Securely offload multi-card camera footage with byte-for-byte checksum verification. Once the copy finishes, immediately index the drive into HyperCatalog for rapid offline visual searching.
+            </p>
+          </div>
+
+          <!-- Pair 2: Color & Telemetry -->
+          <div class="workflow-card">
+            <div class="workflow-header">
+              <div class="workflow-icons">
+                <img src="assets/icons/lumascope.png" alt="LumaScope Pro" class="workflow-icon-mini">
+                <span class="workflow-plus">+</span>
+                <img src="assets/icons/lumalut.png" alt="LumaLUT" class="workflow-icon-mini">
+              </div>
+              <span class="workflow-suite-name">Color & Telemetry Suite</span>
+            </div>
+            <h4>LumaScope Pro + LumaLUT</h4>
+            <p class="workflow-desc">
+              Rapidly audition hundreds of 3D LUTs across Cinema RAW clips in LumaLUT, while monitoring true 60fps waveform, parade, and vectorscope clipping in LumaScope Pro to guarantee broadcast legal compliance.
+            </p>
+          </div>
+
+          <!-- Pair 3: Live Ops Duo -->
+          <div class="workflow-card">
+            <div class="workflow-header">
+              <div class="workflow-icons">
+                <img src="assets/icons/cueflow.png" alt="CueFlow Studio" class="workflow-icon-mini">
+                <span class="workflow-plus">+</span>
+                <img src="assets/icons/cartpad.png" alt="CartPad" class="workflow-icon-mini">
+              </div>
+              <span class="workflow-suite-name">Live Operations Duo</span>
+            </div>
+            <h4>CueFlow Studio + CartPad</h4>
+            <p class="workflow-desc">
+              CueFlow Studio orchestrates the scripted run-of-show, video playback, and lighting cues, while CartPad handles spontaneous jingles and sound effects with sub-millisecond instant tactile triggers.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SUPPORT VIEW -->
+    <section id="view-support" class="view-section">
+      
+      <!-- Contact Card -->
+      <div class="card contact-card">
+        <h2>Contact Support</h2>
+        <p>Have questions, bug reports, or feature requests? We are here to help you get the most out of our tools.</p>
+        <a href="mailto:genkanaiduka@gmail.com?subject=App%20Inquiry%20/%20Support" class="contact-btn">
+          ✉️ Email Support
+        </a>
+        <span class="email-text">genkanaiduka@gmail.com</span>
+      </div>
+
+      <!-- FAQ Card -->
+      <div class="card">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-q">Q: How do I restore my previous purchase on a new device?</div>
+          <p>Open the app settings or paywall screen and tap <strong>"Restore Purchases"</strong>. As long as you are signed in with the same Apple Account used for the original purchase, your Pro access will be restored immediately without any charge.</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q: Are your apps subscription-based or one-time purchases?</div>
+          <p>Our applications prioritize a clean, <strong>one-time lifetime purchase</strong> (Buy Once, Own Forever) model with a free trial period. No recurring monthly or annual subscription fees.</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q: How can I request a refund?</div>
+          <p>All transactions, billing, and refunds are managed directly by Apple. If you wish to request a refund, please visit Apple's official portal at <a href="https://reportaproblem.apple.com" target="_blank" style="color:var(--accent);">reportaproblem.apple.com</a>.</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q: Found a bug or have a feature request?</div>
+          <p>Please email us at <a href="mailto:genkanaiduka@gmail.com" style="color:var(--accent);">genkanaiduka@gmail.com</a> with your device model, macOS / iOS version, and a brief description of the issue. We review and respond to feedback actively.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 3. PRIVACY POLICY VIEW -->
+    <section id="view-privacy" class="view-section">
+
+      <div class="card">
+        <h2>Privacy Policy</h2>
+        <p><strong>Last Updated: November 2026</strong></p>
+        <p style="margin-top: 10px;">
+          This Privacy Policy applies to all software applications and services developed and distributed by <strong>GEN Kanaizuka</strong> through the Apple App Store. Your privacy is paramount, and our software is designed strictly with a privacy-first approach.
+        </p>
+
+        <h3>1. Information We Do NOT Collect</h3>
+        <p>We believe your personal data belongs to you. Our applications:</p>
+        <ul>
+          <li>Do <strong>not</strong> require user account registration.</li>
+          <li>Do <strong>not</strong> collect, store, transmit, or sell personal identifying information (PII).</li>
+          <li>Do <strong>not</strong> use third-party advertising or cross-app tracking networks.</li>
+          <li>Do <strong>not</strong> access your camera, microphone, photos, or files without your explicit, on-demand permission.</li>
+        </ul>
+
+        <h3>2. Local Processing & File Access</h3>
+        <p>
+          All data processing—including media analysis, checksum calculation, timeline cues, audio handling, and cataloging—is performed <strong>strictly on your local device</strong>. Your files, media clips, and production documents never leave your hardware.
+        </p>
+
+        <h3>3. In-App Purchases & Payments</h3>
+        <p>
+          All financial transactions and in-app purchases are securely handled exclusively by Apple via <strong>StoreKit</strong>. We do not collect or store your payment details, credit card numbers, or billing addresses.
+        </p>
+
+        <h3>4. Crash Reports and Diagnostics</h3>
+        <p>
+          If you have opted in to share analytics with app developers through Apple's operating system settings, we may receive anonymized crash logs and basic system diagnostic information solely to debug and improve app stability.
+        </p>
+
+        <h3>5. Children's Privacy</h3>
+        <p>
+          Our applications do not address anyone under the age of 13. We do not knowingly collect personal identifiable information from children.
+        </p>
+
+        <h3>6. Changes to This Privacy Policy</h3>
+        <p>
+          We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date.
+        </p>
+
+        <h3>7. Contact Us</h3>
+        <p>
+          If you have any questions, concerns, or suggestions regarding this Privacy Policy, please contact us at:
+        </p>
+        <p style="margin-top: 8px;">
+          <strong>Developer:</strong> GEN Kanaizuka<br>
+          <strong>Email:</strong> <a href="mailto:genkanaiduka@gmail.com" style="color:var(--accent);">genkanaiduka@gmail.com</a>
+        </p>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 GEN Kanaizuka. All rights reserved.</p>
+    <p style="margin-top: 8px; font-size: 0.82rem;">
+      <a href="#apps" onclick="switchTab('apps'); return false;">Apps</a> &bull; 
+      <a href="#support" onclick="switchTab('support'); return false;">Support</a> &bull; 
+      <a href="#privacy" onclick="switchTab('privacy'); return false;">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <!-- Script for Single-Page Tab Switching & Hash Navigation -->
+  <script>
+    function switchTab(tab, targetAppId) {
+      const isApps = tab === 'apps';
+      const isPrivacy = tab === 'privacy';
+      const isSupport = tab === 'support';
+
+      // Update Tab Buttons
+      document.getElementById('tab-apps').classList.toggle('active', isApps);
+      document.getElementById('tab-support').classList.toggle('active', isSupport);
+      document.getElementById('tab-privacy').classList.toggle('active', isPrivacy);
+
+      // Update Views
+      document.getElementById('view-apps').classList.toggle('active', isApps);
+      document.getElementById('view-support').classList.toggle('active', isSupport);
+      document.getElementById('view-privacy').classList.toggle('active', isPrivacy);
+
+      // Update Hero Content
+      const badge = document.getElementById('hero-badge');
+      const title = document.getElementById('hero-title');
+      const desc = document.getElementById('hero-desc');
+
+      if (isApps) {
+        badge.innerText = "Pro Creative Tools";
+        title.innerText = "Apps for Creators & Live Operators";
+        desc.innerText = "Engineered for rock-solid stability, zero latency, and uncompromising workflows on macOS & iOS.";
+      } else if (isSupport) {
+        badge.innerText = "App Store Help Center";
+        title.innerText = "Support & Customer Service";
+        desc.innerText = "Help, inquiries, and customer service for all applications developed by GEN Kanaizuka.";
+      } else if (isPrivacy) {
+        badge.innerText = "Transparency & Trust";
+        title.innerText = "Privacy Policy";
+        desc.innerText = "Clear, transparent, and privacy-first standards for all our applications.";
+      }
+
+      // Update URL Hash without full reload
+      const newHash = targetAppId ? '#' + targetAppId : '#' + tab;
+      history.replaceState(null, null, newHash);
+
+      // If scrolling to a specific app card
+      if (targetAppId) {
+        setTimeout(() => {
+          const el = document.getElementById('app-' + targetAppId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.style.outline = '2px solid var(--accent)';
+            setTimeout(() => { el.style.outline = 'none'; }, 1500);
+          }
+        }, 80);
+      }
+    }
+
+    function showApp(appId) {
+      switchTab('apps', appId);
+    }
+
+    // Auto-detect hash on load (e.g. index.html#privacy or index.html#support or index.html#cueflow)
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.toLowerCase().replace('#', '');
+      const validApps = ['offloader', 'cueflow', 'hypercatalog', 'lumascope', 'lumalut', 'cartpad'];
+
+      if (hash === 'privacy') {
+        switchTab('privacy');
+      } else if (hash === 'support') {
+        switchTab('support');
+      } else if (validApps.includes(hash)) {
+        showApp(hash);
+      } else {
+        switchTab('apps');
+      }
+    });
+  </script>
+
+</body>
+</html>
